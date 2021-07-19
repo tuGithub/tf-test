@@ -1,0 +1,4 @@
+Use load balancer -> webserver
+
+mintu@MINTU-MB1<webserver-cluster> curl http://terraform-asg-example-1019347127.us-east-2.elb.amazonaws.com:80
+Hello, World
