@@ -3,3 +3,5 @@ tf (as alias of terraform)
 tf show (show plan)
 
 tf graph (DAG visulazation)
+
+when deploy new user-data.sh , need to restart webserver
