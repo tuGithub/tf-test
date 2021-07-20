@@ -7,3 +7,5 @@ tf graph (DAG visulazation)
 when deploy new user-data.sh , need to restart webserver
 
 when use module, the user-data.sh can not live in module dir?
+	- in module/main.tf
+	- template = file("${path.module}/user-data.sh")
