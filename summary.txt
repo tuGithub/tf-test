@@ -5,3 +5,5 @@ tf show (show plan)
 tf graph (DAG visulazation)
 
 when deploy new user-data.sh , need to restart webserver
+
+when use module, the user-data.sh can not live in module dir?
