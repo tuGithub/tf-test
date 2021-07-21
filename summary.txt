@@ -13,3 +13,8 @@ when use module, the user-data.sh can not live in module dir?
 
 When use github, need to have "//" in the source ??
 source = "github.com/tuGithub/tf-test//modules/services/webserver-cluster?ref=v0.0.2"
+
+
+// simple testing
+tf console
+> format("%.1s", "abc.t1")
