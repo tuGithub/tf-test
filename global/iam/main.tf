@@ -1,5 +1,12 @@
+terraform {
+  # Require any 0.12.x version of Terraform
+  required_version = ">= 0.12"
+}
+
+
 provider "aws" {
   region = "us-east-2"
+
 }
 
 resource "aws_iam_user" "example" {

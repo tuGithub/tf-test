@@ -11,10 +11,32 @@ when use module, the user-data.sh can not live in module dir?
 	- template = file("${path.module}/user-data.sh")
 
 
-When use github, need to have "//" in the source ??
-source = "github.com/tuGithub/tf-test//modules/services/webserver-cluster?ref=v0.0.2"
-
 
 // simple testing
 tf console
 > format("%.1s", "abc.t1")
+
+count and for_each Have Limitations (only used in 'static' attributes)
+	You cannot reference any resource outputs in count or for_each.
+	You cannot use count or for_each within a module configuration
+
+Zero-Downtime Deployment Has Limitations
+	it doesn’t work with auto scaling policies. Or, to be more accurate, it resets your ASG size back to its min_size after each deployment, which can be a problem if you had used auto scaling policies to increase the number of running servers.
+
+Valid Plans Can Fail
+	The key realization is that terraform plan looks only at resources in its Terraform state file. -> resources created outside of terraform, will have
+	conflict.
+
+refactor (rename resource)
+	rename in the 'main.tf'
+
+	terraform state mv module.webserver_cluster.aws_security_group.instance module.webserver_cluster.aws_security_group.instance222
+
+	make sure "terraform plan" have no changes
+
+Release modules
+	$ git tag -a "v0.0.5" -m "message"
+	$ git push --follow-tags
+
+	When use github, need to have "//" in the source 
+	source = "github.com/tuGithub/tf-test//modules/services/webserver-cluster?ref=v0.0.2"
