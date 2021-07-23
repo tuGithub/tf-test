@@ -45,6 +45,7 @@ resource "aws_lb_listener_rule" "asg" {
   }
 }
 
+/*
 data "terraform_remote_state" "db" {
   backend = "s3"
 
@@ -62,6 +63,7 @@ data "aws_vpc" "default" {
 data "aws_subnet_ids" "default" {
   vpc_id = data.aws_vpc.default.id
 }
+*/
 
 module "asg" {
   source = "../../cluster/asg-rolling-deploy"
