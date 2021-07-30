@@ -40,3 +40,17 @@ Release modules
 
 	When use github, need to have "//" in the source 
 	source = "github.com/tuGithub/tf-test//modules/services/webserver-cluster?ref=v0.0.2"
+
+Terraform plan before apply
+	terraform plan -out=example.plan
+	terraform apply example.plan
+
+Git commit id:
+mintu@MINTU-MB1<hello-world-app> git rev-parse HEAD
+78be22ebd7c2ba1834b2a73dab9259b30aa2aa4b
+
+mintu@MINTU-MB1<hello-world-app> git describe --tags
+v0.0.3-4-g78be22e
+
+$ git tag -a "v0.0.6" -m "Updated hello-world-example text"
+$ git push --follow-tags

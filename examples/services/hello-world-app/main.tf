@@ -6,10 +6,11 @@ provider "aws" {
 module "hello_world_app" {
   source = "../../../modules/services/hello-world-app"
 
-  server_text            = "hello-world-app"
-  environment            = "stage"
-  db_remote_state_bucket = "terraform-up-and-running-state-mintu-s3"
-  db_remote_state_key    = "stage/data-stores/mysql/terraform.tfstate"
+  server_text            = "hello-world-app-example"
+  environment            = "example"
+
+  # Pass all the outputs from the mysql module straight through!
+  mysql_config = module.mysql
 
   instance_type      = "t2.micro"
   min_size           = 2
@@ -20,6 +21,14 @@ module "hello_world_app" {
     Owner      = "team-hello-world"
     DeployedBy = "terraform"
   }
+}
+
+module "mysql" {
+  source = "../../../stage/data-storage/mysql"
+
+  db_name     = var.db_name
+  db_username = var.db_username
+  db_password = var.db_password
 }
 
 output "alb_dns_name" {
